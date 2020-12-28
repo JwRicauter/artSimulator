@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-const cartSchema = mongoose.Squema({
+const shopSchema = mongoose.Squema({
     name: String,
     email: String,
     shipping: String,
@@ -8,5 +8,5 @@ const cartSchema = mongoose.Squema({
 
 });
 
-var Cart = mongoose.model('Cart', cartSchema);
+var Shop = mongoose.model('Shop', shopSchema);
 export default Painting;
