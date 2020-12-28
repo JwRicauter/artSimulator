@@ -3,6 +3,12 @@ import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
 import cors from 'cors';
 
+import ShopRoutes from '../server/routes/shop';
+import PaintingRoutes from '../server/routes/painting';
+import ContactRoutes from '../server/routes/contact';
+import AboutMeRoutes from '../server/routes/aboutMe';
+
+
 const app = express()
 
 app.use(bodyParser.json({
@@ -18,6 +24,12 @@ app.use(bodyParser.urlencoded({
 app.use(cors());
 
 
+app.use('/shop', ShopRoutes);
+app.use('/painting', PaintingRoutes);
+app.use('/contact', ContactRoutes);
+app.use('/aboutme', AboutMeRoutes);
+
+
 const CONNECTION_URL = "mongodb+srv://wricauter:Fuckcomunism.12@cluster0.xfm72.mongodb.net/<dbname>?retryWrites=true&w=majority";
 const PORT = process.env.PORT || 5000;
 
@@ -29,17 +41,3 @@ mongoose.connect(CONNECTION_URL, {
 .catch((error) => console.log(error.message));
 
 mongoose.set('useFindAndModify', false);
-
-
-
-
-
-
-
-//const client = new MongoClient(uri, { useNewUrlParser: true });
-//const MongoClient = require('mongodb').MongoClient;
-//client.connect(err => {
-//  const collection = client.db("test").collection("devices");
-//  // perform actions on the collection object
-//  client.close();
-//});
