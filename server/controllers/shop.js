@@ -28,5 +28,18 @@ export const getShop = async (req, res) => {
     }
 }
 
+export const createShop = async (req, res) => {
+    const { painting, name, email, shipping } = req.body;
+
+    const newPurchase= new Shop({ painting, name, email, shipping })
+
+    try {
+        await newPaint.save();
+
+        res.status(201).json(newPurchase);
+    } catch (error) {
+        res.status(409).json({ message: error.message });
+    }
+}
 
 export default router;
